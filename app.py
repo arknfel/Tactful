@@ -152,7 +152,6 @@ def delete_user(public_id):
     return jsonify({"message": "not found"})
 
 
-
 ##############################################################
 # MAIN THREAD
 if __name__ == '__main__':
