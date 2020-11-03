@@ -1,0 +1,2 @@
+FLASK_APP=tactful.py
+FLASK_DEBUG=1

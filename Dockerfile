@@ -1,23 +1,30 @@
+# set base image
 FROM python:3.6.6-alpine3.6
 
-RUN apk update && apk add libressl-dev libffi-dev gcc musl-dev python3-dev
-
-
-
-# FROM ubuntu:latest
-
-# RUN apt-get update -y
-# RUN apt-get -y upgrade
-# RUN apt-get install -y python3-pip python3-dev
-# RUN if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
-#     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
-
-COPY . /app
-
-WORKDIR /app
-
-RUN pip install -r requirements.txt
-
+# exposing container port 5000
 EXPOSE 5000
 
-CMD ["python","app.py"]
+# ensure that that python output is sent straight to terminal
+ENV PYTHONUNBUFFERED=1
+
+# create and set the working directoy in the container
+RUN mkdir /code
+WORKDIR /code
+
+# copy the dependancies file to the working directory
+COPY requirements.txt /code/
+
+# install dependancies
+RUN pip install -r requirements.txt
+
+COPY . /code/
+
+# initiate and run the first migration, create database file
+RUN flask db init && flask db migrate && flask db upgrade
+
+RUN python createadmin.py
+
+RUN rm createadmin.py
+
+# run the flask application 
+CMD ["flask","run","--host=0.0.0.0"]
