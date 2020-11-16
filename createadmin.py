@@ -9,7 +9,7 @@ print("___ adding admin __")
 try:
     user = User(
         public_id=str(uuid.uuid4()),
-        name='most',
+        name='Admin',
         password=generate_password_hash('1234', method='sha256'),
         date_joined=dt.datetime.utcnow(),
         is_admin=True
