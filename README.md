@@ -80,7 +80,7 @@ headers = {'Content-type': 'application/json', 'x-access-token': token}
 print(token)
 ```
 output:
-```python
+```
 eyJ0eXAiOiJKV1Qi....
 ```
 Get users
@@ -93,7 +93,7 @@ admin_pid = res.json()['users'][0]['public_id']
 print(admin_pid)
 ```
 output:
-```python
+```
 {'users': [{'date_joined': 'Mon, 16 Nov 2020 18:12:26 GMT', 'name': 'Admin', 'public_id': '808e2e58-ff64-47d4-8f17-a11811f6d03c'}]}
 808e2e58-ff64-47d4-8f17-a11811f6d03c
 ```
@@ -107,7 +107,7 @@ pid1 = res.json()['user']['id']
 print(pid)
 ```
 output:
-```python
+```
 {'message': 'Added new user - 2020-11-16 18:40:32.268215', 'user': {'id': 'cc07860c-b646-4fe2-9071-b8683c09adb6', 'name': 'dummy_user_1'}}
 cc07860c-b646-4fe2-9071-b8683c09adb6
 ```
@@ -120,7 +120,7 @@ res = requests.put(url, data=data, headers=headers)
 print(res.json())
 ```
 output:
-```python
+```
 {'fields': {'name': 'User1'},
  'message': 'updated fileds for user cc07860c-b646-4fe2-9071-b8683c09adb6'}
 ```
@@ -131,7 +131,7 @@ res = requests.get(url, headers=headers)
 print(res.json())
 ```
 output:
-```python
+```
 {'user': {'date_joined': 'Mon, 16 Nov 2020 18:40:32 GMT',
   'name': 'User1',
   'public_id': 'cc07860c-b646-4fe2-9071-b8683c09adb6'}}
@@ -149,7 +149,7 @@ res = requests.get(url, headers=headers)
 print(res.json())
 ```
 output:
-```python
+```
 {'message': 'deleted user cc07860c-b646-4fe2-9071-b8683c09adb6'}
 {'message': 'not found'}
 ```
