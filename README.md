@@ -6,15 +6,15 @@ git clone https://github.com/arknfel/Tactful.git
 
 # Development Environment
 ```shell
-$python3 -m venv venv
-$source venv/bin/activate
+python3 -m venv venv  # create virtual env
+source venv/bin/activate  # activate the env
 
-$pip install -r requirements
+pip install -r requirements  # install requirements
 
-$export FLASK_APP=app.py
+export FLASK_APP=app.py  # set flask as an environment variable
 # set FLASK_APP=app.py  # for Windows
 
-$flask run
+$flask run  # run the flask app
 ```
 # Docker
 To deploy environment, Docker is required on a host machine with 105 MB of free space
